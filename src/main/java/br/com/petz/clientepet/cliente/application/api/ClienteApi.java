@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/v1/cliente")
 public interface ClienteApi {
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(code = HttpStatus.CREATED)
     ClienteResponse postCliente(@RequestBody ClienteRequest clienteRequest);
 }
