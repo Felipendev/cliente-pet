@@ -1,5 +1,6 @@
 package br.com.petz.clientepet.cliente.domain;
 
+import br.com.petz.clientepet.cliente.application.api.ClienteRequest;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -40,19 +41,15 @@ public class Cliente {
     private LocalDateTime dataHoraDoCadastro;
     private LocalDateTime dataHoraDaUltimaAlteração;
 
-    public Cliente(UUID id, String nomeCompleto,
-                   String email, String celular,
-                   String telefone, Sexo sexo,
-                   LocalDate dataNascimento, String cpf,
-                   Boolean aceitaTermos) {
-        this.nomeCompleto = nomeCompleto;
-        this.email = email;
-        this.celular = celular;
-        this.telefone = telefone;
-        this.sexo = sexo;
-        this.dataNascimento = dataNascimento;
-        this.cpf = cpf;
-        this.aceitaTermos = aceitaTermos;
+    public Cliente(ClienteRequest clienteRequest) {
+        this.nomeCompleto = clienteRequest.getNomeCompleto();
+        this.email = clienteRequest.getEmail();
+        this.celular = clienteRequest.getCelular();
+        this.telefone = clienteRequest.getTelefone();
+        this.sexo = clienteRequest.getSexo();
+        this.dataNascimento = clienteRequest.getDataNascimento();
+        this.cpf = clienteRequest.getCpf();
+        this.aceitaTermos = clienteRequest.getAceitaTermos();
         this.dataHoraDoCadastro = LocalDateTime.now();
     }
 }
