@@ -1,5 +1,6 @@
 package br.com.petz.clientepet.cliente.application.api;
 
+import br.com.petz.clientepet.cliente.domain.Cliente;
 import br.com.petz.clientepet.cliente.domain.Sexo;
 import lombok.Value;
 
@@ -16,4 +17,15 @@ public class ClienteDetalhadoResponse {
     private Sexo sexo;
     private LocalDateTime dataHoraDoCadastro;
     private Boolean aceitaTermos;
+
+    public ClienteDetalhadoResponse(Cliente cliente) {
+        this.idCliente = cliente.getIdCliente();
+        this.nomeCompleto = cliente.getNomeCompleto();
+        this.email = cliente.getEmail();
+        this.celular = cliente.getCelular();
+        this.cpf = cliente.getCpf();
+        this.sexo = cliente.getSexo();
+        this.aceitaTermos = cliente.getAceitaTermos();
+        this.dataHoraDoCadastro = cliente.getDataHoraDoCadastro();
+    }
 }
