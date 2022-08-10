@@ -1,4 +1,4 @@
-package br.com.petz.clientepet.pet;
+package br.com.petz.clientepet.pet.domain;
 
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -14,7 +14,7 @@ import java.util.UUID;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class Pet {
+public class Pet  {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(columnDefinition = "uuid",name = "id", updatable = false, unique = true, nullable = false)
