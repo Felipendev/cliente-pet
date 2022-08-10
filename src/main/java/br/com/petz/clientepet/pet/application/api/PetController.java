@@ -13,6 +13,7 @@ public class PetController implements PetApi {
     @Override
     public PetResponse postPet(UUID idCliente, PetRequest petRequest) {
         log.info("[start] PetController - postPet");
+        log.info("[IdCliente] {}", idCliente);
         log.info("[finish] PetController - postPet");
         return null;
     }
