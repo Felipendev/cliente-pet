@@ -1,5 +1,6 @@
 package br.com.petz.clientepet.pet.domain;
 
+import br.com.petz.clientepet.pet.application.api.PetRequest;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,6 +20,9 @@ public class Pet  {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(columnDefinition = "uuid",name = "id", updatable = false, unique = true, nullable = false)
     private UUID idPet;
+    @NotNull
+    @Column(columnDefinition = "uuid",name = "idClienteTutor", nullable = false)
+    private UUID idClienteTutor;
     @NotBlank
     private String nomePet;
     @Enumerated(EnumType.STRING)
@@ -40,5 +44,20 @@ public class Pet  {
 
     private LocalDateTime dataHoraDoCadastro;
     private LocalDateTime dataHoraDaUltimaAlteração;
+
+    public Pet (UUID idCliente, PetRequest petRequest) {
+        this.idClienteTutor = idCliente;
+        this.nomePet = petRequest.getNomePet();
+        this.porte = petRequest.getPorte();
+        this.tipo = petRequest.getTipo();
+        this.microchip = petRequest.getMicrochip();
+        this.raca = petRequest.getRaca();
+        this.sexo = petRequest.getSexo();
+        this.pelagemCor = petRequest.getPelagemCor();
+        this.dataNascimento = petRequest.getDataNascimento();
+        this.rga = petRequest.getRga();
+        this.peso = petRequest.getPeso();
+        this.dataHoraDoCadastro = LocalDateTime.now();
+    }
 }
 
