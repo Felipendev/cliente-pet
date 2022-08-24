@@ -38,6 +38,6 @@ public class PetController implements PetApi {
         log.info("[IdCliente] {} - [idPet] {}", idCliente, idPet);
         PetClienteDetalhaResponse pet = petService.buscaPetDoClienteComId(idCliente, idPet);
         log.info("[start] PetController - getPetDoClienteComId");
-        return null;
+        return pet;
     }
 }
