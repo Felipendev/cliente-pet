@@ -1,10 +1,7 @@
 package br.com.petz.clientepet.pet.application.service;
 
 import br.com.petz.clientepet.cliente.application.service.ClienteService;
-import br.com.petz.clientepet.pet.application.api.PetClienteDetalhaResponse;
-import br.com.petz.clientepet.pet.application.api.PetClienteListResponse;
-import br.com.petz.clientepet.pet.application.api.PetRequest;
-import br.com.petz.clientepet.pet.application.api.PetResponse;
+import br.com.petz.clientepet.pet.application.api.*;
 import br.com.petz.clientepet.pet.application.repository.PetRepository;
 import br.com.petz.clientepet.pet.domain.Pet;
 import lombok.RequiredArgsConstructor;
@@ -56,5 +53,15 @@ public class PetApplicationService implements PetService {
         petRepository.deletaPet(pet);
         log.info("[finish] PetApplicationService - deletaPetDoClienteComId");
 
+    }
+
+    @Override
+    public void alteraPetDoClienteComId(UUID idCliente, UUID idPet, PetAlteracaoRequest petAlteracaoRequest) {
+        log.info("[start] PetApplicationService - alteraPetDoClienteComId");
+        clienteService.buscaClienteAtravesId(idCliente);
+        Pet pet = petRepository.buscaPetPorId(idPet);
+        pet.altera(petAlteracaoRequest);
+        petRepository.salvaPet(pet);
+        log.info("[finish] PetApplicationService - alteraPetDoClienteComId");
     }
 }
