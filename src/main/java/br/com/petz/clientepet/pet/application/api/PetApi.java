@@ -24,7 +24,7 @@ public interface PetApi {
 
     @PatchMapping(value = "/{idPet}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
-    PetResponse patchPetRequest(@PathVariable UUID idCliente, @PathVariable UUID idPet, @RequestBody  @Valid PetAlteracaoRequest petAlteracaoRequest);
+    void patchPetRequest(@PathVariable UUID idCliente, @PathVariable UUID idPet, @RequestBody  @Valid PetAlteracaoRequest petAlteracaoRequest);
 
     @DeleteMapping(value = "/{idPet}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
